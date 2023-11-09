@@ -2,17 +2,23 @@ package tn.esprit.kaddemproject.generic;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Service;
 
 
+@Service
 public class IGenericServiceImp<T,ID> implements IGenericService<T,ID> {
 
-	@Autowired
-	JpaRepository<T,ID> baseRepository;
 
-   // @Autowired
+	private JpaRepository<T, ID> baseRepository;
+
+
+// @Autowired
 	//private  BaseRepository<T, ID> baseRepository;
 
 	@Override

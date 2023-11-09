@@ -1,7 +1,5 @@
 package tn.esprit.kaddemproject.services;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
@@ -11,8 +9,6 @@ import tn.esprit.kaddemproject.entities.Departement;
 import tn.esprit.kaddemproject.entities.Equipe;
 import tn.esprit.kaddemproject.entities.Etudiant;
 import tn.esprit.kaddemproject.generic.IGenericServiceImp;
-import tn.esprit.kaddemproject.repositories.ContratRepository;
-import tn.esprit.kaddemproject.repositories.EquipeRepository;
 import tn.esprit.kaddemproject.repositories.EtudiantRepository;
 
 import java.util.ArrayList;
@@ -29,6 +25,7 @@ public class IEtudiantServiceImp extends IGenericServiceImp<Etudiant,Integer> im
     private final IEquipeService iEquipeService;
 
     private final IDepartementService departementService;
+
 
     @Transactional
     @Override

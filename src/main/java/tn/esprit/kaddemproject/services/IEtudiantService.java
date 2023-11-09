@@ -1,6 +1,5 @@
 package tn.esprit.kaddemproject.services;
 
-import tn.esprit.kaddemproject.entities.Departement;
 import tn.esprit.kaddemproject.entities.Etudiant;
 import tn.esprit.kaddemproject.generic.IGenericService;
 

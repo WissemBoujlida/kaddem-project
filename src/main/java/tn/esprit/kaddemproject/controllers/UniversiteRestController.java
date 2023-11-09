@@ -3,24 +3,19 @@ package tn.esprit.kaddemproject.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.kaddemproject.entities.Contrat;
 import tn.esprit.kaddemproject.entities.Specialite;
-import tn.esprit.kaddemproject.entities.Universite;
-import tn.esprit.kaddemproject.generic.GenericController;
-import tn.esprit.kaddemproject.repositories.UniversiteRepository;
 import tn.esprit.kaddemproject.services.IUniversiteService;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Map;
 
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/universite")
-public class UniversiteRestController extends GenericController<Universite,Integer> {
+@AllArgsConstructor
+public class UniversiteRestController{
 
-    private final IUniversiteService universiteService;
+    private IUniversiteService universiteService;
 
     @GetMapping("/{idUniv}/{startDate}/{endDate}")
     public Map<Specialite,Float> getMontantContartEntreDeuxDate(@PathVariable int idUniv,

@@ -3,8 +3,6 @@ package tn.esprit.kaddemproject.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import tn.esprit.kaddemproject.entities.Universite;
 
-import java.util.Date;
-
 
 public interface UniversiteRepository extends JpaRepository<Universite,Integer> {
 

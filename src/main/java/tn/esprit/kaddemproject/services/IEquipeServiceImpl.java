@@ -1,10 +1,7 @@
 package tn.esprit.kaddemproject.services;
 
-import lombok.AllArgsConstructor;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.kaddemproject.entities.Contrat;
 import tn.esprit.kaddemproject.entities.Equipe;
@@ -19,11 +16,8 @@ import java.util.stream.Collectors;
 
 
 @Slf4j
-@AllArgsConstructor
 @Service
 public class IEquipeServiceImpl extends IGenericServiceImp<Equipe,Integer> implements IEquipeService{
-
-
 
     @Transactional
   //  @Scheduled(cron = "*/20 * * * * *")

@@ -2,30 +2,34 @@ package tn.esprit.kaddemproject.services;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import tn.esprit.kaddemproject.entities.*;
-import tn.esprit.kaddemproject.generic.IGenericServiceImp;
+import tn.esprit.kaddemproject.entities.Contrat;
+import tn.esprit.kaddemproject.entities.Departement;
+import tn.esprit.kaddemproject.entities.Specialite;
+import tn.esprit.kaddemproject.entities.Universite;
 import tn.esprit.kaddemproject.repositories.ContratRepository;
-import tn.esprit.kaddemproject.repositories.DepartementRepository;
-import tn.esprit.kaddemproject.util.HelperClass;
+import tn.esprit.kaddemproject.repositories.UniversiteRepository;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 @Slf4j
 @AllArgsConstructor
-public class IUniversiteServiceImpl extends IGenericServiceImp<Universite,Integer> implements IUniversiteService{
+public class IUniversiteServiceImpl implements IUniversiteService{
 
+    private final UniversiteRepository universiteRepository;
     private final ContratRepository contratRepository;
     private final IDepartementServiceImpl departementService;
 
     @Override
     public void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement) {
-        Universite universite = this.retrieveById(idUniversite);
+        Universite universite = universiteRepository.findById(idUniversite).orElse(null);
         Departement departement = departementService.retrieveById(idDepartement);
         if (universite!= null && departement !=null){
             universite.getDepartements().add(departement);
@@ -34,7 +38,7 @@ public class IUniversiteServiceImpl extends IGenericServiceImp<Universite,Intege
 
     @Override
     public List<Departement> retrieveDepartementsByUniversite(Integer idUniversite) {
-        Universite universite = this.retrieveById(idUniversite);
+        Universite universite = universiteRepository.findById(idUniversite).orElse(null);
         return universite!=null ? universite.getDepartements(): null;
     }
 
@@ -87,8 +91,8 @@ public class IUniversiteServiceImpl extends IGenericServiceImp<Universite,Intege
     public long getMontantContract(Contrat contrat, LocalDate startDate, LocalDate endDate){
 
         long nbJoursContrat = ChronoUnit.DAYS.between(contrat.getDateDebutContrat(), contrat.getDateFinContrat());
-        long nbJoursBetweenDebutContratAndStartDate = ChronoUnit.DAYS.between(startDate,contrat.getDateDebutContrat());
-        long nbJoursBetweenFinContratAndEndDate = ChronoUnit.DAYS.between(contrat.getDateFinContrat(),endDate);
+        long nbJoursBetweenDebutContratAndStartDate = ChronoUnit.DAYS.between(startDate, contrat.getDateDebutContrat());
+        long nbJoursBetweenFinContratAndEndDate = ChronoUnit.DAYS.between(contrat.getDateFinContrat(), endDate);
 
         if(nbJoursBetweenDebutContratAndStartDate<0) nbJoursContrat -= Math.abs(nbJoursBetweenDebutContratAndStartDate);
         if(nbJoursBetweenFinContratAndEndDate<0) nbJoursContrat -= Math.abs(nbJoursBetweenFinContratAndEndDate);

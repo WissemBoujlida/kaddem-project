@@ -1,37 +1,27 @@
 package tn.esprit.kaddemproject.services;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import tn.esprit.kaddemproject.entities.Contrat;
-import tn.esprit.kaddemproject.entities.Equipe;
 import tn.esprit.kaddemproject.entities.Etudiant;
 import tn.esprit.kaddemproject.generic.IGenericServiceImp;
 import tn.esprit.kaddemproject.repositories.ContratRepository;
 import tn.esprit.kaddemproject.repositories.EtudiantRepository;
-import tn.esprit.kaddemproject.util.HelperClass;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
 @Transactional
 @Slf4j
+@RequiredArgsConstructor
 public class IContratServiceImp extends IGenericServiceImp<Contrat,Integer> implements IContratService{
 
     private final ContratRepository contratRepository;
     private final EtudiantRepository etudiantRepository;
-
-
 
     @Override
     public Contrat affectContratToEtudiant(Integer idContrat, String nomE, String prenomE) {
