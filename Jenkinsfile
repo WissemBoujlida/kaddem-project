@@ -11,7 +11,7 @@ pipeline {
 				echo "getting project from GIT..."
 				script {
 					checkout([$class: 'GitSCM', 
-					branches: [[name: '*/master']], 
+					branches: [[name: '*/branch-wissem']], 
 					extensions: [], 
 					userRemoteConfigs: [[credentialsId: '5d1f4f9a-979b-4a29-8e74-d15252589520', url: 'https://github.com/WissemBoujlida/kaddem-project.git']]])
 				}
