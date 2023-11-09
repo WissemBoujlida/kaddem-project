@@ -43,7 +43,7 @@ pipeline {
 
 			steps {
 				echo "unit testing Universite services using JUnit/Mockito..."
-				sh "mvn test -Dtest='IUniversiteServiceImplTest'"
+				sh "mvn test"
 			}
 		}
 
