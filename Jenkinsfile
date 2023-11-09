@@ -19,6 +19,8 @@ pipeline {
 		stage("COMPILING") {
 
 			steps {
+				echo "discovering the generated Maven artifacts, JUnit Surefire & FailSafe reports and FindBugs reports..."
+				sh "mvn clean verify"
 				echo "clearing the target directory..."			
 				sh "mvn clean package -DskipTests"
 				echo "compiling..."
