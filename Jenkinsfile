@@ -1,6 +1,9 @@
 pipeline {
 	agent any
-
+	tools {
+		jdk 'OpenJDK-11'
+		maven '3.8.7'
+        }
 	stages {
 
 		stage("GIT") {
